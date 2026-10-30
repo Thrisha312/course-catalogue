@@ -1,0 +1,29 @@
+
+<%- include("../partials/head") %>
+<%- include("../partials/header") %>
+
+<section class="section container">
+    <div class="info-box">
+        <h1><%= course.title %></h1>
+
+        <img
+            src="<%= course.image %>"
+            alt="<%= course.title %>"
+            class="detail-image"
+        >
+
+        <p><span class="tag"><%= course.category %></span></p>
+        <p><%= course.description %></p>
+
+        <p><strong>Duration:</strong> <%= course.duration %></p>
+        <p><strong>Level:</strong> <%= course.level %></p>
+
+        <p class="price">
+            Course Fee: ₹<%= course.price.toLocaleString("en-IN") %>
+        </p>
+
+        <a href="/courses" class="btn">Back to Courses</a>
+    </div>
+</section>
+
+<%- include("../partials/footer") %>

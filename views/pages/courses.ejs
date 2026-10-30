@@ -1,0 +1,41 @@
+
+<%- include("../partials/head") %>
+<%- include("../partials/header") %>
+
+<section class="section container">
+    <h1>Our Courses</h1>
+    <p>Search and filter courses to find the right one for you.</p>
+
+    <form action="/courses" method="GET" class="search-form">
+        <input
+            type="text"
+            name="search"
+            placeholder="Search courses..."
+            value="<%= search %>"
+        >
+
+        <select name="category">
+            <option value="">All Categories</option>
+            <% categories.forEach(cat => { %>
+                <option value="<%= cat %>" <%= category === cat ? "selected" : "" %>>
+                    <%= cat %>
+                </option>
+            <% }) %>
+        </select>
+
+        <button type="submit" class="btn">Search</button>
+        <a href="/courses" class="btn">Reset</a>
+    </form>
+
+    <% if (courses.length > 0) { %>
+        <div class="course-grid">
+            <% courses.forEach(course => { %>
+                <%- include("../partials/course-card", { course: course }) %>
+            <% }) %>
+        </div>
+    <% } else { %>
+        <p>No courses found. Try another search.</p>
+    <% } %>
+</section>
+
+<%- include("../partials/footer") %>
